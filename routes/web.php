@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 // use App\Http\Controllers\Auth\LoginController;
@@ -29,4 +31,6 @@ use App\Http\Controllers\TechnicienController;
 // })->name('agent.dashboard')->middleware('auth');
 Route::get('/hyperdesque',[HyperdesqueController::class,'index'])->name('Hyperdesque');
 Route::get('/technicien',[TechnicienController::class,'index'])->name('technicien');
+Route::get('/employer',[EmployerController::class,'index'])->name('employer');
+Route::get('/admin',[HomeController::class,'index'])->name('home');
 Route::get('/',[LoginController::class,'index'])->name('Login');
