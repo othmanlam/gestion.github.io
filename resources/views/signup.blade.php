@@ -61,21 +61,20 @@
     <div class="signup-container">
         <h2 class="text-center text-white mb-4">GESTION DES INTERVENTIONS</h2>
 
-        <form>
-            <div class="mb-3">
-                <label class="form-label text-white">Username</label>
-                <input type="text" class="form-control" placeholder="Enter your email">
-            </div>
+        <form method="POST" action="{{ route('login') }}">
+    @csrf
+    <div class="mb-3">
+        <label class="form-label text-white">Email</label>
+        <input type="email" name="email" class="form-control" required>
+    </div>
 
-            <div class="mb-3">
-                <label class="form-label text-white">Password</label>
-                <input type="password" class="form-control" placeholder="***************">
-            </div>
+    <div class="mb-3">
+        <label class="form-label text-white">Mot de passe</label>
+        <input type="password" name="password" class="form-control" required>
+    </div>
 
-            <button type="submit" class="btn btn-signup w-100 text-white py-2">Sign Up</button>
-
-           
-        </form>
+    <button type="submit" class="btn btn-signup w-100 text-white py-2">Se connecter</button>
+</form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
