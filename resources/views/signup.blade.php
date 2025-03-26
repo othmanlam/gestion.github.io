@@ -61,7 +61,7 @@
     <div class="signup-container">
         <h2 class="text-center text-white mb-4">GESTION DES INTERVENTIONS</h2>
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST"  action="{{ route('login') }}">
     @csrf
     <div class="mb-3">
         <label class="form-label text-white">Email</label>

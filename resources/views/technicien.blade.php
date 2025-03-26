@@ -67,7 +67,7 @@
     <!-- Footer -->
     <footer class="mt-5 p-4 text-center">
         <div class="container">
-            <p>&copy; 2024 Gestion des Interventions. Tous droits réservés.</p>
+            <p>&copy; 2025 Gestion des Interventions.</p>
         </div>
     </footer>
 
