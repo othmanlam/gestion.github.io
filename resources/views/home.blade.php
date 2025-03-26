@@ -43,7 +43,7 @@
                     <i class="bi bi-people h1"></i>
                     <h5 class="fw-bold">Gérer Utilisateurs</h5>
                     <p>Ajouter, modifier ou supprimer des employés et techniciens.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="#" class="btn btn-outline-light" Action="{{ route('utilisateurs.dashbord') }}">Accéder</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -51,8 +51,9 @@
                     <i class="bi bi-pc-display h1"></i>
                     <h5 class="fw-bold">Gérer Postes</h5>
                     <p>Ajouter et suivre les postes informatiques.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="#" class="btn btn-outline-light" Action="{{ route('Postes.dashbord') }}">Accéder</a>
                 </div>
+               
             </div>
             <div class="col-md-4">
                 <div class="card p-3">

@@ -56,4 +56,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Employer', function () {
         return view('employer');  // 
     })->name('employer.dashboard');
+
 });
+Route::get('/utlisateurs', function () {
+    return view('utilisteurs');  // 
+})->name('utilisateurs.dashboard');
