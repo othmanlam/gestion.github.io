@@ -30,7 +30,7 @@ use Inertia\Inertia;
 //     return view('agent.dashboard'); // Page agent Hyperdesk
 // })->name('agent.dashboard')->middleware('auth');
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\UtilisateurController;
 // Show the login form (signup page)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('signup');
 
@@ -58,6 +58,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('employer.dashboard');
 
 });
+<<<<<<< HEAD
 Route::get('/utlisateurs', function () {
     return view('utilisteurs');  // 
 })->name('utilisateurs.dashboard');
+=======
+
+
+
+Route::resource('utilisateurs', UtilisateurController::class);
+>>>>>>> auth

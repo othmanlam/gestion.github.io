@@ -45,6 +45,8 @@
                     <p>Ajouter, modifier ou supprimer des employés et techniciens.</p>
                     <a href="#" class="btn btn-outline-light" Action="{{ route('utilisateurs.dashbord') }}">Accéder</a>
                 </div>
+                    <a href="{{ route('utilisateurs.index') }}" class="btn btn-outline-light">Accéder</a>
+                    </div>
             </div>
             <div class="col-md-4">
                 <div class="card p-3">
@@ -52,6 +54,8 @@
                     <h5 class="fw-bold">Gérer Postes</h5>
                     <p>Ajouter et suivre les postes informatiques.</p>
                     <a href="#" class="btn btn-outline-light" Action="{{ route('Postes.dashbord') }}">Accéder</a>
+=======
+                    <a href="#" class="b tn btn-outline-light" >Accéder</a>
                 </div>
                
             </div>
