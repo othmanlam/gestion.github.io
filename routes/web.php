@@ -58,13 +58,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('employer.dashboard');
 
 });
-<<<<<<< HEAD
+
 Route::get('/utlisateurs', function () {
     return view('utilisteurs');  // 
 })->name('utilisateurs.dashboard');
-=======
+
 
 
 
 Route::resource('utilisateurs', UtilisateurController::class);
->>>>>>> auth
+
