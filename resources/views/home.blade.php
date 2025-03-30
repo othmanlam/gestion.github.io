@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door"></i> Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-plus"></i> Gérer Utilisateurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('utilisateurs.index') }}"><i class="bi bi-person-plus"></i> Gérer Utilisateurs</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-pc-display"></i> Gérer Postes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-bar-chart"></i> Statistiques</a></li>
                 </ul>
@@ -36,35 +36,22 @@
 
     <!-- Dashboard Admin -->
     <div class="container mt-4">
-        <h1 class="text-center"><i class="bi bi-speedometer2"></i> Tableau de Bord</h1>
+        <h1 class="text-center"> Tableau de Bord</h1>
         <div class="row text-center mt-4">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-people h1"></i>
                     <h5 class="fw-bold">Gérer Utilisateurs</h5>
                     <p>Ajouter, modifier ou supprimer des employés et techniciens.</p>
-                    <a href="#" class="btn btn-outline-light" Action="{{ route('utilisateurs.dashbord') }}">Accéder</a>
-                </div>
                     <a href="{{ route('utilisateurs.index') }}" class="btn btn-outline-light">Accéder</a>
-                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-pc-display h1"></i>
                     <h5 class="fw-bold">Gérer Postes</h5>
                     <p>Ajouter et suivre les postes informatiques.</p>
-                    <a href="#" class="btn btn-outline-light" Action="{{ route('Postes.dashbord') }}">Accéder</a>
-=======
-                    <a href="#" class="b tn btn-outline-light" >Accéder</a>
-                </div>
-               
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <i class="bi bi-bar-chart h1"></i>
-                    <h5 class="fw-bold">Statistiques & Rapports</h5>
-                    <p>Consulter les statistiques et générer des rapports.</p>
-                    <a href="#" class="btn btn-outline-light">Voir</a>
+                    <a href="{{ route('postes.index') }}" class="btn btn-outline-light">Accéder</a> <!-- Correct route for "Postes" -->
                 </div>
             </div>
         </div>

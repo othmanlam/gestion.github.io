@@ -26,8 +26,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-house-door"></i> Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-pc-display"></i> Mes Postes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-exclamation-triangle"></i> Signaler un Problème</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('mes.pannes') }}"><i class="bi bi-pc-display"></i> Mes Postes</a></li>
+                    <li class="nav-item"><a class="nav-link" ><i class="bi bi-exclamation-triangle"></i> Signaler un Problème</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-clock-history"></i> Suivi des Demandes</a></li>
                 </ul>
             </div>
@@ -43,7 +43,7 @@
                     <i class="bi bi-pc-display h1"></i>
                     <h5 class="fw-bold">Mes Postes</h5>
                     <p>Consulter la liste des postes informatiques sous votre responsabilité.</p>
-                    <a href="#" class="btn btn-outline-light">Voir</a>
+                    <a class="btn btn-outline-light" href="{{ route('mes.pannes') }}">voir </a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -51,7 +51,7 @@
                     <i class="bi bi-exclamation-triangle h1"></i>
                     <h5 class="fw-bold">Signaler un Problème</h5>
                     <p>Remplissez un formulaire pour signaler un problème avec votre poste.</p>
-                    <a href="#" class="btn btn-outline-light">Signaler</a>
+                    <a class="btn btn-outline-light" href="{{ route('mes.pannes') }}">Signaler </a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -59,13 +59,12 @@
                     <i class="bi bi-clock-history h1"></i>
                     <h5 class="fw-bold">Suivi des Demandes</h5>
                     <p>Suivez l'état de vos demandes de réparation.</p>
-                    <a href="#" class="btn btn-outline-light">Suivre</a>
+                    <a href="{{ route('demandeSuivi')}}" class="btn btn-outline-light">Suivre</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="mt-5 p-4 text-center">
         <div class="container">
             <p>&copy; 2025 Gestion des Interventions</p>

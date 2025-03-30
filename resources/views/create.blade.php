@@ -3,126 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un utilisateur</title>
+    <title>Ajouter un Poste</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        body {
-            background-color: #181818;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .navbar {
-            background-color: #222;
-        }
-
-        .card {
-            background-color: #242424;
-            color: #fff;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .card-header {
-            background-color:   #ff4500;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-
-        .form-label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            background-color: #333;
-            color: #fff;
-            border-radius: 4px;
-            border: 1px solid #555;
-        }
-
-        .btn-custom {
-            background-color: #ff4500;
-            color: white;
-            font-weight: bold;
-            border-radius: 4px;
-        }
-
-        .btn-custom:hover {
-            background-color: #ff6347;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: #ff6347;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 600px;
-            margin-top: 50px;
-        }
-
-        .mb-3 {
-            margin-bottom: 1.5rem;
-        }
-    </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="card shadow-sm">
-            <div class="card-header">
-                <h3>Ajouter un utilisateur</h3>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('utilisateurs.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" name="nom" id="nom" class="form-control" required placeholder="Entrez le nom complet">
-                    </div>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Ajouter un Poste</h2>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" id="email" class="form-control" required placeholder="Entrez l'email">
-                    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Rôle</label>
-                        <select name="role" id="role" class="form-control" required>
-                            <option value="Admin">Admin</option>
-                            <option value="Technicien">Technicien</option>
-                            <option value="Employé">Employé</option>
-                            <option value="AgentHyperdesk">Agent Hyperdesk</option>
-                        </select>
-                    </div>
+    <form action="{{ route('postes.store') }}" method="POST" class="shadow p-4 rounded bg-light">
+        @csrf
 
-                    <div class="mb-3">
-                        <label for="mot_de_passe" class="form-label">Mot de passe</label>
-                        <input type="password" name="mot_de_passe" id="mot_de_passe" class="form-control" required placeholder="Créez un mot de passe">
-                    </div>
-
-                    <button type="submit" class="btn btn-custom btn-block">Ajouter</button>
-                </form>
-            </div>
+        <div class="mb-3">
+            <label for="numero_serie" class="form-label">Numéro de Série</label>
+            <input type="text" class="form-control" id="numero_serie" name="numero_serie" value="{{ old('numero_serie') }}" required>
         </div>
 
-        <div class="footer">
-            <p>&copy; 2025 Gestion des utilisateurs. </p>
+        <div class="mb-3">
+            <label for="modele" class="form-label">Modèle</label>
+            <input type="text" class="form-control" id="modele" name="modele" value="{{ old('modele') }}" required>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="mb-3">
+            <label for="emplacement" class="form-label">Emplacement</label>
+            <input type="text" class="form-control" id="emplacement" name="emplacement" value="{{ old('emplacement') }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="responsable_id" class="form-label">Responsable</label>
+            <select class="form-control" id="responsable_id" name="responsable_id" required>
+                <option value="">-- Sélectionner un responsable --</option>
+                @foreach($responsables as $responsable)
+                    <option value="{{ $responsable->id }}">{{ $responsable->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="etat" class="form-label">État</label>
+            <select class="form-control" id="etat" name="etat" required>
+                <option value="Disponible">Disponible</option>
+                <option value="En Panne">En Panne</option>
+                <option value="En Réparation">En Réparation</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <a href="{{ route('postes.index') }}" class="btn btn-secondary">Retour</a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

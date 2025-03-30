@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('modele');
             $table->string('emplacement');
             $table->foreignId('responsable_id')->constrained('utilisateurs')->onDelete('cascade');
-            $table->string('etat');
-            $table->timestamps();
+            $table->enum('etat', ['Disponible', 'En Panne', 'En Réparation']);            $table->timestamps();
         });
     }
 

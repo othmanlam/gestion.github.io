@@ -1,46 +1,19 @@
 <?php
 
-use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-// use App\Http\Controllers\Auth\LoginController;
-// use App\Http\Controllers\HyperdesqueController;
-// use App\Http\Controllers\LoginController;
-// use App\Http\Controllers\TechnicienController;
-
-// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [LoginController::class, 'login']);
-// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// // Pages selon le rôle
-// Route::get('/home', function () {
-//     return view('home'); // Page admin
-// })->name('admin.home')->middleware('auth');
-
-// Route::get('/technicien', function () {
-//     return view('technicien'); // Page technicien
-// })->name('technicien.dashboard')->middleware('auth');
-
-// Route::get('/employe', function () {
-//     return view('employe.dashboard'); // Page employé
-// })->name('employe.dashboard')->middleware('auth');
-
-// Route::get('/agent/dashboard', function () {
-//     return view('agent.dashboard'); // Page agent Hyperdesk
-// })->name('agent.dashboard')->middleware('auth');
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UtilisateurController;
-// Show the login form (signup page)
+use App\Http\Controllers\PosteController;
+use App\Http\Controllers\PanneController;
+
+// Page de connexion
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('signup');
 
-// Handle login submission
+// Authentification
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-
-// Handle logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Role-based dashboard routes (protected by 'auth')
+// Tableaux de bord basés sur les rôles (protégés par 'auth')
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', function () {
         return view('home');  // Admin Dashboard
@@ -51,18 +24,28 @@ Route::middleware(['auth'])->group(function () {
     })->name('technicien.dashboard');
 
     Route::get('/hyperdesk', function () {
-        return view('hypedesa');  // Hyperdesk Dashboard
-    })->name('hypedesa.dashboard');
-    Route::get('/Employer', function () {
-        return view('employer');  // 
-    })->name('employer.dashboard');
+        return view('hyperdesk');  // Hyperdesk Dashboard
+    })->name('hyperdesk.dashboard');  // Correction ici du nom de la vue
 
+    Route::get('/employe', function () {
+        return view('employe');  // Employé Dashboard
+    })->name('employe.dashboard');  // Correction ici du nom de la route
 });
 
-
-
-
-
-
+// Gestion des utilisateurs
 Route::resource('utilisateurs', UtilisateurController::class);
 
+// Gestion des postes
+Route::resource('postes', PosteController::class); // Suppression de la redondance
+
+// Gestion des pannes
+Route::get('/mes-pannes', [PanneController::class, 'index'])->name('mes.pannes');
+Route::resource('pannes', PanneController::class);
+Route::post('/pannes/{panne}/signaler', [PanneController::class, 'signalerProbleme'])->name('pannes.signaler');
+
+Route::prefix('pannes')->name('pannes.')->group(function() {
+    Route::get('/declarer/{id}', [PanneController::class, 'declarerProbleme'])->name('declarerProbleme');
+    Route::post('/declarer/{id}', [PanneController::class, 'storeDeclaration'])->name('storeDeclaration');
+});
+
+Route::get('/demande-suivi', [PanneController::class, 'demandeSuivi'])->name('demandeSuivi');
