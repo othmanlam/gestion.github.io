@@ -31,6 +31,7 @@ use Inertia\Inertia;
 // })->name('agent.dashboard')->middleware('auth');
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UtilisateurController;
+use App\Http\Controllers\PosteController;
 // Show the login form (signup page)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('signup');
 
@@ -61,3 +62,21 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::resource('utilisateurs', UtilisateurController::class);
+
+
+// Route::resource('postes', PosteController::class);
+
+
+Route::resource('postes', PosteController::class);
+use App\Http\Controllers\PanneController;
+
+Route::get('/mes-pannes', [PanneController::class, 'index'])->name('mes.pannes');
+Route::resource('pannes', PanneController::class);
+Route::post('/pannes/{panne}/signaler', [PanneController::class, 'signalerProbleme'])->name('pannes.signaler');
+Route::prefix('pannes')->name('pannes.')->group(function() {
+    // Route pour afficher le formulaire de déclaration de problème
+    Route::get('/declarer/{id}', [PanneController::class, 'declarerProbleme'])->name('declarerProbleme');
+    // Route pour enregistrer la déclaration de problème
+    Route::post('/declarer/{id}', [PanneController::class, 'storeDeclaration'])->name('storeDeclaration');
+});
+Route::get('/demande-suivi', [PanneController::class, 'demandeSuivi'])->name('demandeSuivi');

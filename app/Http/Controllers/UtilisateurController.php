@@ -24,10 +24,9 @@ class UtilisateurController extends Controller
         'nom' => 'required',
         'email' => 'required|email|unique:utilisateurs',
         'role' => 'required',
-        'mot_de_passe' => 'required|min:6', // Ajout de validation pour le mot de passe
+        'mot_de_passe' => 'required|min:6', 
     ]);
-
-    // Hash le mot de passe avant de l'enregistrer
+    
     $data = $request->all();
     $data['mot_de_passe'] = bcrypt($request->password);
 
