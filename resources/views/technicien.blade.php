@@ -37,29 +37,23 @@
     <div class="container mt-4">
         <h1 class="text-center"><i class="bi bi-wrench"></i> Tableau de Bord</h1>
         <div class="row text-center mt-4">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-list-check h1"></i>
                     <h5 class="fw-bold">Mes Interventions</h5>
                     <p>Voir les pannes assignées et leur état.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="{{ route('interventions.index') }}" class="btn btn-outline-light">Accéder</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-tools h1"></i>
                     <h5 class="fw-bold">Diagnostic & Réparation</h5>
                     <p>Mettre à jour l'état des pannes et enregistrer les actions effectuées.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="{{ route('interventions.index') }}" class="btn btn-outline-light">Accéder</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <i class="bi bi-clipboard-check h1"></i>
-                    <h5 class="fw-bold">Historique</h5>
-                    <p>Consulter les interventions passées et les réparations effectuées.</p>
-                    <a href="#" class="btn btn-outline-light">Voir</a>
-                </div>
+            
             </div>
         </div>
     </div>

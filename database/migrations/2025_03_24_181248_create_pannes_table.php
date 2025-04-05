@@ -16,6 +16,9 @@ return new class extends Migration
            
             $table->foreignId('poste_id')->constrained('postes')->onDelete('cascade');
             $table->foreignId('employe_id')->constrained('utilisateurs')->onDelete('cascade');
+            
+                $table->foreignId('technicien_id')->nullable()->constrained('techniciens')->onDelete('set null');
+            
             $table->string('type_panne');
             $table->dateTime('date_signalement');
             $table->string('statut');

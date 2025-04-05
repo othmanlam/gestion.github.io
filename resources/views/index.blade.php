@@ -50,35 +50,53 @@
         <a href="{{ route('utilisateurs.create') }}" class="btn btn-primary mb-3" >Ajouter un utilisateur</a>
 
         <table class="table table-bordered table-dark">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Rôle</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($utilisateurs as $utilisateur)
-                    <tr>
-                        <td>{{ $utilisateur->id }}</td>
-                        <td>{{ $utilisateur->nom }}</td>
-                        <td>{{ $utilisateur->email }}</td>
-                        <td>{{ $utilisateur->role }}</td>
-                        <td>
-                            <a href="{{ route('utilisateurs.edit', $utilisateur->id) }}" class="btn btn-warning btn-sm">Modifier</a>
-                            |
-                            <form action="{{ route('utilisateurs.destroy', $utilisateur->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Spécialité</th>
+            <th>Charge de Travail</th>
+            <th>Disponibilité</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($utilisateurs as $utilisateur)
+            <tr>
+                <td>{{ $utilisateur->id }}</td>
+                <td>{{ $utilisateur->nom }}</td>
+                <td>{{ $utilisateur->email }}</td>
+                <td>{{ $utilisateur->role }}</td>
+
+                @if($utilisateur->role == 'Technicien')
+                    {{-- Vérifie si la relation technicien existe --}}
+                    @if($utilisateur->technicien)
+                        <td>{{ $utilisateur->technicien->specialite ?? 'Non renseignée' }}</td>
+                        <td>{{ $utilisateur->technicien->charge_de_travail ?? 'Non renseignée' }}</td>
+                        <td>{{ $utilisateur->technicien->disponible ? 'Disponible' : 'Indisponible' }}</td>
+                    @else
+                        <td colspan="3">Aucune donnée de technicien</td>
+                    @endif
+                @else
+                    <td colspan="3">null</td>
+                @endif
+                
+                <td>
+                    <a href="{{ route('utilisateurs.edit', $utilisateur->id) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    |
+                    <form action="{{ route('utilisateurs.destroy', $utilisateur->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr ?')">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
     </div>
 
     <!-- Footer -->
