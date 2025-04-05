@@ -29,4 +29,10 @@ class Panne extends Model
     {
         return $this->belongsTo(User::class, 'responsable_id');
     }
+    public function interventions()
+{
+    return $this->hasMany(Intervention::class);
+}
+
+   
 }

@@ -11,7 +11,68 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- Ton fichier CSS personnalisé (si besoin) -->
+   <style>/* 🌙 Fond sombre pour toute la page */
+body {
+    background-color: #181818;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🏆 Conteneur stylé */
+.container {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* 🏷️ Table stylée avec même couleur que la page */
+.table {
+    background-color: #222; /* Même couleur que le conteneur */
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 🌟 En-tête du tableau */
+.table thead {
+    background-color: #333 !important; /* Fond sombre */
+    color: #ffcc00 !important; /* Texte doré */
+}
+
+/* 🏷️ Lignes du tableau */
+.table tbody tr {
+    background-color: #222 !important; /* Même couleur que le conteneur */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+/* 🎨 Effet hover sur les lignes */
+.table-hover tbody tr:hover {
+    background-color: #444 !important; /* Léger contraste */
+    transform: scale(1.01);
+}
+
+/* 📌 Bordures des cellules */
+.table td, .table th {
+    border: 1px solid #444 !important; /* Bordures discrètes */
+}
+
+/* 📌 Navbar stylisée */
+.navbar {
+    background-color: #222;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* 📌 Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+    margin-top: 30px;
+}
+</style>
 </head>
 <body>
 
@@ -30,8 +91,8 @@
     </a>
 
     <div class="table-responsive">
-        <table class="table table-hover shadow-sm">
-            <thead class="table-dark">
+    <table class="table table-bordered table-dark">
+    <thead class="table-dark">
                 <tr>
                     <th>#</th>
                     <th><i class="fa fa-barcode"></i> Numéro Série</th>

@@ -15,11 +15,10 @@ class PanneController extends Controller
      */
     public function index()
     {
+        
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Vous devez être connecté.');
         }
-
-        // Récupérer les pannes assignées à l'utilisateur
         $pannes = Poste::where('responsable_id', Auth::id())->get(); // Récupère les pannes pour le responsable connecté
         return view('indexPanne', compact('pannes'));
     }
@@ -58,9 +57,7 @@ class PanneController extends Controller
         return redirect()->route('pannes.index')->with('success', 'Panne enregistrée avec succès.');
     }
 
-    /**
-     * Afficher les détails d'une panne.
-     */
+    
     public function show(panne $panne)
     {
         if (!Auth::check()) {
@@ -74,25 +71,19 @@ class PanneController extends Controller
         return view('panne.show', compact('panne'));
     }
 
-    /**
-     * Modifier une panne.
-     */
+    
     public function edit(panne $panne)
     {
         //
     }
 
-    /**
-     * Mettre à jour une panne.
-     */
+   
     public function update(Request $request, Panne $panne)
     {
        //
     }
 
-    /**
-     * Supprimer une panne.
-     */
+    
     public function destroy(panne $panne)
     {
         if (!Auth::check()) {
@@ -104,9 +95,7 @@ class PanneController extends Controller
         return redirect()->route('pannes.index')->with('success', 'Panne supprimée avec succès.');
     }
 
-    /**
-     * Signaler un problème sur une panne.
-     */
+   
     public function signalerProbleme(Request $request, panne $panne)
     {
         if (!Auth::check()) {

@@ -38,29 +38,23 @@
     <div class="container mt-4">
         <h1 class="text-center"><i class="bi bi-speedometer2"></i> Tableau de Bord</h1>
         <div class="row text-center mt-4">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-list-check h1"></i>
                     <h5 class="fw-bold">Gérer Interventions</h5>
                     <p>Attribuer les interventions aux techniciens en fonction de leur charge de travail.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="{{route('assigner.index')}}" class="btn btn-outline-light">Accéder</a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card p-3">
                     <i class="bi bi-person-gear h1"></i>
                     <h5 class="fw-bold">Gestion des Techniciens</h5>
                     <p>Surveiller la disponibilité des techniciens et réattribuer les tâches.</p>
-                    <a href="#" class="btn btn-outline-light">Accéder</a>
+                    <a href="{{route('assigner.index')}}" class="btn btn-outline-light">Accéder</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card p-3">
-                    <i class="bi bi-graph-up h1"></i>
-                    <h5 class="fw-bold">Statistiques & Suivi</h5>
-                    <p>Suivre l'état des interventions et la charge de travail des équipes.</p>
-                    <a href="#" class="btn btn-outline-light">Voir</a>
-                </div>
+            
             </div>
         </div>
     </div>

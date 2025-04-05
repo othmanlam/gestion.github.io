@@ -35,4 +35,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
         ];
     }
+    public function technicien()
+{
+    return $this->hasOne(Technicien::class, 'utilisateur_id');
+}
+public function interventions()
+{
+    return $this->hasMany(Intervention::class, 'technicien_id');
+}
+
 }

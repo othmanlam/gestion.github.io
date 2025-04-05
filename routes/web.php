@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\assignercontroller;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\PosteController;
+
 // Show the login form (signup page)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('signup');
 
@@ -80,3 +82,26 @@ Route::prefix('pannes')->name('pannes.')->group(function() {
     Route::post('/declarer/{id}', [PanneController::class, 'storeDeclaration'])->name('storeDeclaration');
 });
 Route::get('/demande-suivi', [PanneController::class, 'demandeSuivi'])->name('demandeSuivi');
+
+// routes/web.php
+use App\Http\Controllers\assingController;
+
+// Route::resource('assign', assingController::class);
+
+// // المسار لتعيين التقني لـ panne
+// Route::post('pannes/{id}/assign', [assingController::class, 'assignTechnicien'])->name('pannes.assign');
+
+
+
+
+
+  Route::get('/assigner', [assignercontroller::class, 'index'])->name('assigner.index');
+  Route::get('/assigner/{panne_id}/technicians', [assignercontroller::class, 'showTechnicians'])->name('assigner.technicians');
+  Route::post('/assigner', [assignercontroller::class, 'storeAssignment'])->name('assigner.store');
+  use App\Http\Controllers\FinController;
+
+Route::get('interventions', [FinController::class, 'index'])->name('interventions.index');
+Route::get('interventions/{id}/edit', [FinController::class, 'edit'])->name('interventions.edit');
+Route::put('interventions/{id}', [FinController::class, 'update'])->name('interventions.update');
+
+  

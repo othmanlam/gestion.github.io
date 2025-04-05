@@ -44,7 +44,6 @@
                 <input type="date" class="form-control" id="date_signalement" name="date_signalement" value="{{ now()->toDateString() }}" required>
             </div>
 
-            <!-- Statut -->
             <div class="mb-3">
                 <label for="statut" class="form-label"><i class="bi bi-info-circle"></i> Statut</label>
                 <select class="form-select" id="statut" name="statut" required>
