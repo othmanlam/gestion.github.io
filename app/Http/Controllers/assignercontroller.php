@@ -54,17 +54,19 @@ class AssignerController extends Controller
         return redirect()->route('assigner.index')->with('error', 'Technicien non valide.');
     }
 
+    // Créer une nouvelle intervention
     Intervention::create([
         'technicien_id' => $request->technicien_id,
         'panne_id' => $request->panne_id,
-        'description' => null,
-        'pieces_remplacees' => null,
-        'date_fin' => null,
+        'description' => null, // This could be updated based on input
+        'pieces_remplacees' => null, // This could be updated based on input
+        'date_fin' => null, // This could be updated based on input
         'statut_intervention' => 'En cours',
     ]);
 
-    return redirect()->route('indexassigner')->with('success', 'Technicien assigné avec succès');
+    return redirect()->route('assigner.index')->with('success', 'Technicien assigné avec succès');
 }
+
 
 
     
